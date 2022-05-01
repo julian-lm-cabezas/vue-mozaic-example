@@ -1,11 +1,11 @@
 <template>
-  <div id="navbar-title"> My App </div>
+  <div id="navbar-title"> My App <span class="mu-pl-050">v1.0.0</span> </div>
   <div id="navbar" class="ml-flexy">
-    <div class="nav-info">
+    <div class="nav-info mu-ml-100">
       <img src="@/assets/images/logo-lm.png">
       <h3>Order List</h3>
     </div>
-    <div class="user-info">
+    <div class="user-info mu-mr-100">
       <div class="user-detail">
         <label>{{user.name}}</label>
         <label>{{user.ldap}}</label>
@@ -14,8 +14,14 @@
     </div>
   </div>
   <div class="ml-container ml-container--fluid">
-    <filters/>
-    <order-table/>
+    <div class="ml-flexy ml-flexy--gutter mu-mt-200">
+      <div class="ml-flexy__col ml-flexy__col--2of6">
+        <filters/>
+      </div>
+      <div class="ml-flexy__col ml-flexy__col--2of3">
+        <order-table/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,6 +47,11 @@ onBeforeMount(async ()=>{
   line-height: 1.5rem;
   font-weight: bold;
   color: white;
+
+  span{
+    font-size: .7rem;
+    color:$lime;
+  }
 }
 #navbar{
   width: 100%;

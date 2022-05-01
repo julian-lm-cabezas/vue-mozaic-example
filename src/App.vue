@@ -30,7 +30,7 @@ html, body{
     width:100%;
     height: 100vh;
     z-index: -8;
-    background: rgba(200,200,200,.8);
+    background: rgba(220,220,220,.8);
   }
 }
 
