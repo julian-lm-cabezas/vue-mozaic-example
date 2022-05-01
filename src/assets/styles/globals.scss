@@ -1,0 +1,38 @@
+$lime:#AAEA21;
+$lighter-green: #ADD585;
+$light-green: #78BE20;
+$green: #5EAA14;
+$dark-green: rgb(73, 129, 17);
+$light-gray: #EAEAEA;
+$gray: #CCCCCC;
+$dark-gray: #333;
+$blue: #09707e;
+$red: #da291c;
+
+$border: 1px solid #d8d8d8;
+$box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+$color_transparent: rgba(116,198,96,0.16);
+
+$dark-font: $dark-gray;
+$light-font: #6f676c;
+
+$font-regular: '~@/assets/fonts/LeroyMerlinSans-Web-Regular' !default;
+$font-light: '~@/assets/fonts/LeroyMerlinSans-Web-Light' !default;
+$font-semibold: '~@/assets/fonts/LeroyMerlinSans-Web-SemiBold' !default;
+$font-italic: '~@/assets/fonts/LeroyMerlinSans-Web-Italic' !default;
+$font-italic-light: '~@/assets/fonts/LeroyMerlinSans-Web-LightItalic' !default;
+$font-italic-semibold: '~@/assets/fonts/LeroyMerlinSans-Web-SemiBoldItalic' !default;
+
+@mixin addFont($name, $property, $style, $weight) {
+  font-family: $name;
+  src: url('#{$property}.woff') format('woff'), url('#{$property}.woff2') format('woff2');
+  font-style: $style;
+  font-weight: $weight;
+}
+
+@font-face { @include addFont('LM-Regular', $font-regular, normal, normal); }
+@font-face { @include addFont('LM-Regular', $font-light, normal, lighter); }
+@font-face { @include addFont('LM-Regular', $font-semibold, normal, bold); }
+@font-face {  @include addFont('LM-Regular', $font-italic, italic, normal); }
+@font-face { @include addFont('LM-Regular', $font-italic-light, italic, lighter); }
+@font-face { @include addFont('LM-Regular', $font-italic-semibold, italic, bold); }
