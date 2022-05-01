@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --mode production",
+    "build:dev": "vue-cli-service build --mode production",
+    "build:pre": "vue-cli-service build --mode production",
+    "build:int": "vue-cli-service build --mode production",
+    "build:pro": "vue-cli-service build --mode production",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "postinstall": "npm run test:unit"
   },
   "dependencies": {
     "@mozaic-ds/vue-3": "^0.18.0",
