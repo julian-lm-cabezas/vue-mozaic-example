@@ -19,14 +19,14 @@
         <filters :filters="filters"/>
       </div>
       <div class="ml-flexy__col ml-flexy__col--full ml-flexy__col--2of3@from-l mu-p-050 mu-m-000">
-        <order-table :orders="orders"/>
+        <order-table :orders="ordersInfo.orders" :totalPages="ordersInfo.totalPages" :page="ordersInfo.page"/>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {onBeforeMount,onMounted, reactive, ref} from 'vue'
+import {onBeforeMount,onMounted, reactive} from 'vue'
 import Filters from '@/components/Filters.vue'
 import OrderTable from '@/components/OrderTable.vue'
 import * as AuthService from '@/services/auth'
@@ -39,7 +39,12 @@ import * as OrderService from '@/services/orders'
     storeNumber: ''
   })
 
-  let orders = ref([])
+  const ordersInfo = reactive({
+    orders:[],
+    page: 1,
+    totalPages: 3,
+    sort: { key: null, order: 'asc'}
+  })
 
   onBeforeMount(async ()=>{
       let userAuth = await AuthService.getUser()
@@ -47,7 +52,8 @@ import * as OrderService from '@/services/orders'
   })
 
 onMounted(async () => {
-    orders.value = await OrderService.findAll()
+    ordersInfo.orders = await OrderService.findAll()
+    console.log(ordersInfo)
 })
 </script>
 <style lang="scss" scoped>
