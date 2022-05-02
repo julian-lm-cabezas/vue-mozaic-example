@@ -1,5 +1,5 @@
 <template>
-  <div id="navbar-title"> My App <span class="mu-pl-050">v1.0.0</span> </div>
+  <!--<div id="navbar-title"> My App <span class="mu-pl-050">v1.0.0</span> </div>
   <div id="navbar" class="ml-flexy">
     <div class="nav-info mu-ml-100">
       <img src="@/assets/images/logo-lm.png">
@@ -12,30 +12,42 @@
       </div>        
       <m-icon name="AccountCustomerCollaborator32"/>
     </div>
-  </div>
+  </div>-->
   <div class="ml-container ml-container--fluid">
-    <div class="ml-flexy ml-flexy--gutter mu-mt-200">
-      <div class="ml-flexy__col ml-flexy__col--2of6">
-        <filters/>
+    <div class="ml-flexy mu-mt-400">
+      <div class="ml-flexy__col ml-flexy__col--full ml-flexy__col--1of4@from-l mu-p-050 mu-m-000">
+        <filters :filters="filters"/>
       </div>
-      <div class="ml-flexy__col ml-flexy__col--2of3">
-        <order-table/>
+      <div class="ml-flexy__col ml-flexy__col--full ml-flexy__col--2of3@from-l mu-p-050 mu-m-000">
+        <order-table :orders="orders"/>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {onBeforeMount, reactive} from 'vue'
+import {onBeforeMount,onMounted, reactive, ref} from 'vue'
 import Filters from '@/components/Filters.vue'
 import OrderTable from '@/components/OrderTable.vue'
 import * as AuthService from '@/services/auth'
+import * as OrderService from '@/services/orders'
 
-const user = reactive({ldap:'',name:''})
+  const user = reactive({ldap:'',name:''})
 
-onBeforeMount(async ()=>{
-    let userAuth = await AuthService.getUser()
-    Object.keys(user).forEach(k=> user[k]= userAuth[k])
+  const filters = reactive({
+    orderNumber: '',
+    storeNumber: ''
+  })
+
+  let orders = ref([])
+
+  onBeforeMount(async ()=>{
+      let userAuth = await AuthService.getUser()
+      Object.keys(user).forEach(k=> user[k]= userAuth[k])
+  })
+
+onMounted(async () => {
+    orders.value = await OrderService.findAll()
 })
 </script>
 <style lang="scss" scoped>

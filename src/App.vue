@@ -1,10 +1,17 @@
 <template>
+  <navbar/>
   <router-view/>
   <div id="bg">
     <div class="bg-mask"></div>
   </div>
   <div id="page-block"/>
 </template>
+<script setup>
+
+import Navbar from '@/components/Navbar.vue'
+
+</script>
+
 
 <style lang="scss">
 html, body{
@@ -30,7 +37,7 @@ html, body{
     width:100%;
     height: 100vh;
     z-index: -8;
-    background: rgba(220,220,220,.8);
+    background: linear-gradient(to bottom, rgba(255,255,255, .9) 0%, rgba(255,255,255, .9) 10%, rgba(220,220,220, .8) 20% )
   }
 }
 
@@ -40,4 +47,6 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
   color: $dark-font;
 }
+
+
 </style>

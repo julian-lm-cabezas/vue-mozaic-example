@@ -36,3 +36,12 @@ $font-italic-semibold: '~@/assets/fonts/LeroyMerlinSans-Web-SemiBoldItalic' !def
 @font-face {  @include addFont('LM-Regular', $font-italic, italic, normal); }
 @font-face { @include addFont('LM-Regular', $font-italic-light, italic, lighter); }
 @font-face { @include addFont('LM-Regular', $font-italic-semibold, italic, bold); }
+
+.box{
+  width: inherit;
+  background: rgba(255,255,255,.7);
+  border-radius: 3px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: $box-shadow;
+}
